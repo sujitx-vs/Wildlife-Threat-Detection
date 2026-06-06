@@ -1,6 +1,6 @@
 Here's a polished README that is suitable for GitHub, recruiters, portfolio reviews, and academic submissions.
 
-# 🦜 Wildlife Threat Detection using Deep Learning
+# 🌿 EcoGuard AI - Wildlife Threat Detection System
 
 ## 📖 Project Overview
 
