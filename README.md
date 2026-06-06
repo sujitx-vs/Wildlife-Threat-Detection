@@ -1,29 +1,71 @@
-# 🌿 EcoGuard AI - Wildlife Threat Detection System
+# 🌿 EcoGuard AI
 
-## 📖 Project Overview
+### Wildlife Threat Detection using Deep Learning and Environmental Audio Analysis
 
-Wildlife Threat Detection is a Deep Learning-based environmental audio classification project designed to identify potential threats in forest ecosystems using sound recordings.
+EcoGuard AI is a Deep Learning-based environmental audio classification system designed to identify potential threats in wildlife habitats using acoustic monitoring.
 
-The project utilizes the ESC-50 environmental sound dataset and converts audio recordings into Mel Spectrogram representations, which are then processed by a Convolutional Neural Network (CNN) to classify sounds as:
+The system analyzes environmental sound recordings, converts them into Mel Spectrogram representations, and uses a Convolutional Neural Network (CNN) to classify sounds as either:
 
 * 🚨 Threat
 * 🌿 Non-Threat
 
-The objective is to simulate an intelligent monitoring system capable of detecting human or industrial activities that may endanger wildlife habitats.
+This project demonstrates how Artificial Intelligence can support wildlife conservation, forest monitoring, and environmental protection through automated sound analysis.
 
 ---
 
-## 🎯 Problem Statement
+# 📸 Application Preview
 
-Illegal logging, vehicle intrusion, industrial activity, and other human-generated sounds pose significant threats to wildlife and forest ecosystems.
+## 📸 Application Preview
 
-Traditional monitoring approaches require continuous human supervision, making large-scale deployment difficult.
+![Home Page](assets/images/Home_Page.png)
 
-This project explores whether environmental audio recordings can be automatically classified into threat and non-threat categories using Deep Learning techniques.
+![Audio Uploaded](assets/images/Audio_Uploaded.png)
+
+![Threat Prediction](assets/images/Threat_Prediction.png)
+
+![Non Threat Prediction](assets/images/Non_Threat_Prediction.png)
 
 ---
 
-## 📊 Dataset
+# 📖 Project Overview
+
+Wildlife habitats are increasingly threatened by illegal logging, vehicle intrusion, industrial activities, and other human-generated disturbances.
+
+Traditional monitoring systems require continuous human supervision, making large-scale deployment difficult and expensive.
+
+EcoGuard AI explores the use of Deep Learning and environmental audio classification to automatically detect potentially harmful activities through acoustic signals.
+
+The project utilizes the ESC-50 environmental sound dataset and transforms environmental audio recordings into image-like Mel Spectrogram representations for CNN-based classification.
+
+---
+
+# 🎯 Problem Statement
+
+Environmental monitoring plays a crucial role in wildlife conservation.
+
+Human-generated sounds such as:
+
+* Chainsaws
+* Vehicle Engines
+* Industrial Machinery
+* Helicopters
+* Sirens
+
+can indicate activities that threaten wildlife ecosystems.
+
+The objective of this project is to automatically classify environmental sounds into:
+
+### 🚨 Threat
+
+Sounds associated with potential human interference.
+
+### 🌿 Non-Threat
+
+Natural environmental sounds that are commonly present in wildlife habitats.
+
+---
+
+# 📊 Dataset
 
 This project uses the ESC-50 Dataset.
 
@@ -32,26 +74,26 @@ The ESC-50 dataset contains:
 * 2000 environmental audio recordings
 * 50 semantic sound classes
 * 40 samples per class
-* 5-second duration for every audio clip
+* 5-second duration audio clips
 
-Dataset categories include:
+The dataset includes sounds from:
 
-* Animal Sounds
+* Animals
 * Natural Soundscapes
 * Water Sounds
-* Human Sounds
-* Domestic Sounds
-* Urban Sounds
+* Human Activities
+* Domestic Environments
+* Urban Environments
 
-Each audio recording is accompanied by metadata containing its class label.
+Each audio sample is accompanied by metadata describing its semantic class.
 
 ---
 
-## 🏷 Threat Mapping Strategy
+# 🏷 Threat Mapping Strategy
 
-Since ESC-50 is not originally designed for threat detection, the original classes were manually grouped into two categories.
+Since ESC-50 was not originally designed for wildlife threat detection, the original classes were manually grouped into two categories.
 
-### Threat Sounds
+## 🚨 Threat Sounds
 
 Examples include:
 
@@ -59,30 +101,32 @@ Examples include:
 * Engine
 * Helicopter
 * Airplane
-* Vehicle Horn
 * Siren
+* Vehicle Horn
 * Jackhammer
 * Industrial Machinery
 
-These sounds represent potential human interference or disturbance in wildlife habitats.
-
-### Non-Threat Sounds
-
-Examples include:
-
-* Bird Chirping
-* Insects
-* Rain
-* Wind
-* Water Streams
-* Frog Calls
-* Animal Vocalizations
-
-These sounds represent natural environmental conditions.
+These sounds represent potential human interference or disturbance.
 
 ---
 
-## 🔄 Project Pipeline
+## 🌿 Non-Threat Sounds
+
+Examples include:
+
+* Birds
+* Insects
+* Frogs
+* Rain
+* Wind
+* Water Streams
+* Natural Wildlife Vocalizations
+
+These sounds represent normal environmental conditions.
+
+---
+
+# 🔄 Project Pipeline
 
 ```text
 Raw Audio (.wav)
@@ -110,51 +154,54 @@ CNN Training
         │
         ▼
 Model Evaluation
+        │
+        ▼
+Streamlit Deployment
 ```
 
 ---
 
-## 🎵 Audio Processing
+# 🎵 Audio Processing
 
-Each audio file undergoes feature extraction using Mel Spectrogram transformation.
+Environmental audio recordings are transformed into Mel Spectrogram representations before being used for model training.
 
-Why Mel Spectrograms?
+### Why Mel Spectrograms?
 
 * Preserve frequency information
-* Capture temporal sound patterns
-* Widely used in speech and audio classification
+* Capture temporal acoustic patterns
+* Widely used in speech and audio recognition
 * Compatible with Convolutional Neural Networks
 
 Generated spectrograms are stored as NumPy arrays and directly fed into the CNN model.
 
 ---
 
-## 🧠 CNN Architecture
+# 🧠 CNN Architecture
 
-The custom CNN architecture consists of:
+The custom CNN architecture consists of three convolutional feature extraction blocks followed by a dense classification head.
 
-### Convolution Block 1
+## Convolution Block 1
 
 * Conv2D (32 Filters)
 * Batch Normalization
 * ReLU Activation
 * MaxPooling
 
-### Convolution Block 2
+## Convolution Block 2
 
 * Conv2D (64 Filters)
 * Batch Normalization
 * ReLU Activation
 * MaxPooling
 
-### Convolution Block 3
+## Convolution Block 3
 
 * Conv2D (128 Filters)
 * Batch Normalization
 * ReLU Activation
 * MaxPooling
 
-### Classification Head
+## Classification Head
 
 * GlobalAveragePooling2D
 * Dense (128)
@@ -167,7 +214,7 @@ The custom CNN architecture consists of:
 
 ---
 
-## ⚙ Training Configuration
+# ⚙ Training Configuration
 
 | Parameter            | Value               |
 | -------------------- | ------------------- |
@@ -180,9 +227,9 @@ The custom CNN architecture consists of:
 
 ---
 
-## 📈 Model Performance
+# 📈 Model Performance
 
-### Test Set Results
+## Test Set Results
 
 | Metric    | Score  |
 | --------- | ------ |
@@ -193,7 +240,7 @@ The custom CNN architecture consists of:
 
 ---
 
-### Confusion Matrix
+## Confusion Matrix
 
 ```text
                 Predicted
@@ -206,40 +253,36 @@ Threat            18       62
 
 ---
 
-## 🔍 Result Analysis
+# 🔍 Result Analysis
 
 The model demonstrates strong performance in distinguishing threat and non-threat environmental sounds.
 
-### Strengths
+## Strengths
 
 * High Precision (88.57%)
-* Good overall Accuracy (84.52%)
-* Successfully identifies most threat sounds
+* Good Overall Accuracy (84.52%)
+* Strong Threat Identification Capability
+* Robust Environmental Audio Classification
 
-### Limitations
+## Limitations
 
-* Some threat sounds are still misclassified as non-threat
-* Recall can be improved for real-world deployment
-* Dataset size is relatively small for deep learning
+* Some Threat Sounds are misclassified as Non-Threat
+* Recall can be improved for deployment scenarios
+* Dataset size remains relatively small for Deep Learning
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```text
-Wildlife_Threat_Detection
+Wildlife-Threat-Detection
+│
+├── assets
+│   └── images
 │
 ├── datasets
 │   ├── raw
-│   │   ├── audio
-│   │   └── meta
-│   │       └── esc50.csv
-│   │
 │   └── processed
-│       ├── threat
-│       ├── non_threat
-│       ├── spectrograms
-│       └── train_test
 │
 ├── notebooks
 │   ├── 01_dataset_understanding.ipynb
@@ -249,13 +292,9 @@ Wildlife_Threat_Detection
 │   └── 05_cnn_training.ipynb
 │
 ├── models
-│   └── wildlife_threat_detector.keras
+│   └── threat_detector.keras
 │
-├── outputs
-│   ├── plots
-│   ├── reports
-│   └── confusion_matrices
-│
+├── app.py
 ├── requirements.txt
 ├── README.md
 └── .gitignore
@@ -263,7 +302,7 @@ Wildlife_Threat_Detection
 
 ---
 
-## 🛠 Technologies Used
+# 🛠 Technologies Used
 
 * Python
 * NumPy
@@ -273,51 +312,60 @@ Wildlife_Threat_Detection
 * TensorFlow
 * Keras
 * Scikit-Learn
+* Streamlit
 * Jupyter Notebook
 
 ---
 
-## 🚀 Future Improvements
+# 🚀 Future Improvements
 
-* Audio Data Augmentation
+### Audio Data Augmentation
 
-  * Noise Injection
-  * Time Shifting
-  * Pitch Shifting
+* Noise Injection
+* Time Shifting
+* Pitch Shifting
 
-* Transfer Learning
+### Transfer Learning
 
-  * MobileNetV2
-  * EfficientNet
-  * ResNet
+* MobileNetV2
+* EfficientNet
+* ResNet
 
-* Real-Time Audio Monitoring
+### Real-Time Monitoring
 
-* Streamlit Deployment
+* Live Microphone Input
+* Continuous Threat Detection
 
-* Multi-Class Threat Detection
+### Multi-Class Threat Classification
 
-  * Chainsaw
-  * Vehicle
-  * Helicopter
-  * Machinery
-  * Human Activity
+* Chainsaw Detection
+* Vehicle Detection
+* Helicopter Detection
+* Machinery Detection
+* Human Activity Detection
 
-* Edge Deployment on IoT Devices
+### Edge Deployment
 
-* Explainable AI using Grad-CAM
+* Raspberry Pi
+* Jetson Nano
+* IoT Wildlife Monitoring Devices
+
+### Explainable AI
+
+* Grad-CAM Visualization
+* Spectrogram Attention Maps
 
 ---
 
-## ▶ Installation
+# ▶ Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/Wildlife-Threat-Detection.git
+git clone https://github.com/sujitx-vs/Wildlife-Threat-Detection.git
 ```
 
-Navigate to the project:
+Navigate to the project directory:
 
 ```bash
 cd Wildlife-Threat-Detection
@@ -331,31 +379,26 @@ pip install -r requirements.txt
 
 ---
 
-## ▶ Running the Project
+# ▶ Running the Application
 
-Open Jupyter Notebook:
+Launch the Streamlit application:
 
 ```bash
-jupyter notebook
+streamlit run app.py
 ```
 
-Run notebooks sequentially:
+If Streamlit is not recognized:
 
-```text
-01_dataset_understanding.ipynb
-02_label_creation.ipynb
-03_audio_exploration.ipynb
-04_feature_extraction.ipynb
-05_cnn_training.ipynb
+```bash
+python -m streamlit run app.py
 ```
 
 ---
 
-## 📌 Conclusion
+# 📌 Conclusion
 
-This project demonstrates an end-to-end Deep Learning pipeline for environmental audio classification using Mel Spectrograms and Convolutional Neural Networks.
+EcoGuard AI demonstrates an end-to-end Deep Learning pipeline for environmental audio classification using Mel Spectrograms and Convolutional Neural Networks.
 
-The developed model achieved an accuracy of **84.52%** and successfully learned meaningful acoustic patterns that distinguish wildlife-friendly environmental sounds from potentially harmful human-generated activities.
+The developed model achieved an accuracy of **84.52%** and successfully learned meaningful acoustic patterns that distinguish natural wildlife sounds from potentially harmful human-generated activities.
 
-The project highlights the potential of Deep Learning-based acoustic monitoring systems for wildlife conservation, forest surveillance, and environmental protection.
-
+The project highlights the potential of AI-powered acoustic monitoring systems for wildlife conservation, forest surveillance, and environmental protection.
