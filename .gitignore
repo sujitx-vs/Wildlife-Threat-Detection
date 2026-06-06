@@ -1,5 +1,10 @@
-datasets/raw
-datasets/processed
+datasets/raw/
+datasets/processed/
+
 .ipynb_checkpoints/
-models/
 .vscode/
+
+__pycache__/
+*.pyc
+
+models/training_history.pkl
