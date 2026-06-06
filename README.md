@@ -1,5 +1,3 @@
-Here's a polished README that is suitable for GitHub, recruiters, portfolio reviews, and academic submissions.
-
 # 🌿 EcoGuard AI - Wildlife Threat Detection System
 
 ## 📖 Project Overview
